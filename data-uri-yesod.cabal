@@ -80,7 +80,7 @@ executable         data-uri-yesod
                      , data-uri-yesod
                      , yesod
 
-    ghc-options:       -threaded -O2
+    ghc-options:       -threaded -O2 -static -optc-static -optl-static -optl-pthread
 
 test-suite test
     type:              exitcode-stdio-1.0

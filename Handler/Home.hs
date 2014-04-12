@@ -41,7 +41,7 @@ postHomeR = do
         $(widgetFile "homepage")
 
 uploadForm :: Form FileInfo
-uploadForm = renderDivs $ fileAFormReq "Choose a file"
+uploadForm = renderDivs $ fileAFormReq "Or manually select a file:"
 
 {-TODO: pretty sure this could just be awaitForever Base64.encode-}
 encodeSink :: Sink ByteString Handler ByteString

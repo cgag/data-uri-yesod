@@ -44,7 +44,7 @@ type Form x = Html -> MForm (HandlerT App IO) (FormResult x, Widget)
 instance Yesod App where
     approot = ApprootMaster $ appRoot . settings
 
-    maximumContentLength _ (Just HomeR) = Just $ 10 * 1024 * 1024 -- 10 megs
+    maximumContentLength _ (Just HomeR) = Just $ 100 * 1024 * 1024 -- 100 megs
     maximumContentLength _ _ = Just $ 2 * 1024 * 1024 -- 2 megs
 
     -- Store session data on the client in encrypted cookies,
@@ -66,8 +66,11 @@ instance Yesod App where
         pc <- widgetToPageContent $ do
             $(combineStylesheets 'StaticR
                 [ css_normalize_css
-                , css_bootstrap_css
+                , css_datauri_css
                 ])
+            addScriptRemote "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
+            $(combineScripts 'StaticR
+                [ js_bootstrap_min_js ])
             $(widgetFile "default-layout")
         giveUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 

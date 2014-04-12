@@ -1,9 +1,10 @@
-<h1>_{MsgHello}
+<div class="drop">
+  <h3>Drag and drop your file here to generate a data URI.
+
 $maybe (info,encoded) <- submission
   <div .message>
-    Base64 encoded:
     <pre>#{encoded}
-    Your file's type was <em>#{fileContentType info}</em>. 
+
 <form method=post action=@{HomeR}#form enctype=#{formEnctype}>
   ^{formWidget}
   <input type="submit" value="Send it!">
