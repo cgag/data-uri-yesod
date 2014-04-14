@@ -69,6 +69,8 @@ library
                  , wai-logger                    >= 2.1        && < 2.2
                  , base64-bytestring             >= 1.0.0.1
                  , mime-types                    >= 0.1.0.3
+                 , temporary                     >= 1.2.0.2
+                 , http-types                    >= 0.8.3
 
 executable         data-uri-yesod
     if flag(library-only)

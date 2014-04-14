@@ -1,10 +1,13 @@
 <div class="drop">
   <h3>Drag and drop your file here to generate a data URI.
 
-$maybe (info,encoded) <- submission
+$maybe DataURIs {raw=encoded, imageTag = imgTag} <- submission
   <div .message>
     <pre>#{encoded}
 
+  $maybe imgT <- imgTag
+    <pre>Tag: #{imgT}
+    Tag: #{preEscapedToMarkup imgT}
 <form method=post action=@{HomeR}#form enctype=#{formEnctype}>
   ^{formWidget}
   <input type="submit" value="Send it!">
